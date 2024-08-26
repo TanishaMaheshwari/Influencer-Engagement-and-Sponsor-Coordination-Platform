@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    EDIT AD REQUEST
+{% endblock %}
+
+{% block content %}
+
+    <h3 class="display-h3 m-3"> Edit Ad Request </h3>
+
+    <form action="{{url_for('edit_adreq_post',id=adreq.id)}}" method="post" class="form">   
+    <div class="form-floating mb-3">
+      <input type="hidden" class="form-control" id="floatingInput" name= "campaign_id" value="{{campaign.id}}" placeholder="campaign_id" readonly>
+      <label for="campaign_id">Campaign</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "campaign" value="{{campaign.Name}}" placeholder="campaign" readonly>
+      <label for="campaign">Campaign</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "Message" value="{{adreq.Messages}}" placeholder="Message" required>
+      <label for="Message">Message</label>
+    </div>
+    <div class="form-floating mb-3">
+      <textarea class="form-control" placeholder="Leave a comment here" name="Requirement" id="floatingTextarea2" style="height: 100px" required>{{adreq.Requirements}}</textarea>
+      <!-- <input type="text" class="form-control" id="floatingInput" name= "description" placeholder="description" required> -->
+      <label for="Requirement">Requirement</label>
+    </div>
+       <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="floatingInput" name= "PaymentAmount" value="{{adreq.PaymentAmount}}" placeholder="PaymentAmount" required>
+      <label for="PaymentAmount">PaymentAmount</label>
+    </div>
+    <div class="form-check form-switch mb-3">
+      <input class="form-check-input" type="checkbox" name="Status" role="switch" value="on" id="flexSwitchCheckChecked" {{ 'checked' if adreq.Status else '' }}>
+      <label class="form-check-label" for="flexSwitchCheckChecked">Status</label>
+    </div>
+    <div class="form-floatin mb-3">
+      <button type="submit" class="btn btn-success">
+        <i class="fas fa-pencil-alt"></i>
+        Update
+    </button>
+    </div>
+    </form>
+
+
+{% endblock %}

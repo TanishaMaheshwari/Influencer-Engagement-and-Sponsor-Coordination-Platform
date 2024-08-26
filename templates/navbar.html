@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+
+    {% if 'user_id' in session %}
+    <a class="navbar-brand" href="{{ url_for('index') }}"><span class="logo-text">COLLABIFY</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+      </a>
+     <ul class="dropdown-menu me-auto mb-2 mb-lg-0">
+
+       {% if session['user_role'] == 'Admin' %}
+        <li class="dropdown-item">
+           <a class="nav-link active" aria-current="page" href="{{ url_for('admin')}}">Home</a>
+         </li>
+         <li class="dropdown-item">
+         <a class="nav-link active" aria-current="page" href="{{ url_for('admin_inf') }}">Influencers</a>
+        </li>       
+        <li class="dropdown-item">
+         <a class="nav-link active" aria-current="page" href="{{ url_for('admin_spn') }}">Sponsors</a>
+        </li>
+       {% elif session['user_role'] == 'Influencer' %}
+         <li class="nav-item">
+           <a class="nav-link active" aria-current="page" href="{{ url_for('inf_home') }}">Home</a>
+         </li>
+         <li class="nav-item">
+         <a class="nav-link active" aria-current="page" href="{{ url_for('profile') }}">Profile</a>
+        </li>
+       {% elif session['user_role'] == 'Sponsor' %}
+         <li class="nav-item">
+           <a class="nav-link active" aria-current="page" href="{{ url_for('sponsor_home') }}">Home</a>
+         </li>
+         <li class="nav-item">
+         <a class="nav-link active" aria-current="page" href="{{ url_for('profile') }}">Profile</a>
+        </li>
+       {% endif %}
+     </ul>
+      {% if session['user_role'] == 'Admin' %}
+        <a href="{{ url_for('admin')}}">
+          <span class="navbar-text me-3">
+            Admin Dashboard
+                 </span>
+        </a>
+
+      {% elif session['user_role'] == 'Influencer' %}
+      <span class="navbar-text me-3">
+      Influencer Dashboard
+       </span>
+      {% else %}
+      <span class="navbar-text me-3">
+          Sponsor Dashboard
+       </span>
+      {% endif %}
+      <a href="{{ url_for('logout') }}" class="nav-link">
+        <button type="button" class="btn btn-outline-danger">
+          <i class="fas fa-power-off"></i> 
+        </button>
+      </a>
+    </div>
+      
+    {% else %}
+    <a class="navbar-brand" href="{{ url_for('index') }}"><span class="logo-text">COLLABIFY</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+      </li>
+    </ul>
+    {% endif %}
+  </div>
+</nav>
+ 
+<style>
+ .logo-text {
+    font-family: monospace;
+    font-size: 25px;
+    font-weight: bold;
+    color: #0000b3;
+    margin-left: 40px;
+    margin-right: 30px;
+  }
+  .nav-link:hover {
+  color: #0066cc; /* change text color on hover */
+  background-color: #f2f2f2; /* add a background color on hover */
+  text-decoration: none; /* remove underline on hover */
+  transition: color 0.2s ease; /* smooth transition on hover */
+  }
+</style>

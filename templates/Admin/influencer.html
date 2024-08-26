@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block title %}Influencer List{% endblock %}
+
+{% block content %}
+<h1 class="text-center m-4">Influencers</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Niche</th>
+        <th>Category</th>
+        <th>Flag</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for influencer in influencer %}
+    <tr>
+      <td  style="width: 100px;">{{ influencer.id }}</td>
+      <td  style="width: 100px;">{{ influencer.username }}</td>
+      <td  style="width: 100px;">{{ influencer.Niche }}</td>
+      <td  style="width: 100px;">{{ influencer.Category }}</td>
+      <td  style="width: 100px;">{{ influencer.Flag }}</td>
+      <td  style="width: 200px;">
+      <div class="btn-group">
+        <form action="{{url_for('inf_flag', id = influencer.id)}}" method="post">
+            <button type="submit" class="btn btn-outline-primary me-2">
+              Flag
+            </button>
+          </form>
+          <form action="{{url_for('inf_remove', id = influencer.id)}}" method="post">
+            <button type="submit" class="btn btn-outline-danger" >
+              Remove
+            </button>
+          </form>
+      </div>
+      </td>
+    </tr>
+{% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

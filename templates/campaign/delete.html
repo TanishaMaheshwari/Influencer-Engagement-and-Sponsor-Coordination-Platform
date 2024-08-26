@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    DELETE Campaign
+{% endblock %}
+
+{% block content %}
+
+    <h3 class="display-h3 mb-3"> Delete Campaign </h3>
+
+    <p>Are you sure you want to delete your Campaign- "{{campaign.Name}}" ?</p>
+
+    <form action="" method="POST" class="form">
+    <div class="form-floating mb-3">
+      <button type="submit" class="btn btn-danger">
+        <i class="fas fa-trash"></i>
+       Delete
+    </button>
+    </div>
+</form>
+
+{% endblock %}

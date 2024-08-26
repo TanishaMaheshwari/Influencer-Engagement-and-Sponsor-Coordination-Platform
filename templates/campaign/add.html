@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    ADD Campaign
+{% endblock %}
+
+{% block content %}
+
+    <h3 class="display-h3 m-3"> Add Campaign </h3>
+
+    <form action="", method="POST", class="form">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "name" placeholder="name" required>
+      <label for="name">Name</label>
+    </div>
+    <div class="form-floating mb-3">
+      <textarea class="form-control" placeholder="Leave a comment here" name="description" id="floatingTextarea2" style="height: 100px" required></textarea>
+      <!-- <input type="text" class="form-control" id="floatingInput" name= "description" placeholder="description" required> -->
+      <label for="description">Description</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="date" class="form-control" id="dateInput" name="startdate" placeholder="Select a date" min="2022-01-01" max="2025-12-31" value="2022-12-31">
+      <label for="startdate" class="form-label">Start Date:</label>
+    </div>
+       <div class="form-floating mb-3">
+     <input type="date" class="form-control" id="dateInput" name="enddate" placeholder="Select a date" min="2022-01-01" max="2025-12-31" value="2022-12-31">
+     <label for="enddate" class="form-label">End Date:</label>
+    </div>
+       <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="floatingInput" name= "budget" placeholder="budget" required>
+      <label for="budget">Budget</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "goal" placeholder="goal" required>
+      <label for="goal">Goal</label>
+    </div>
+    <div class="form-check form-switch mb-3">
+      <input class="form-check-input" type="checkbox" name="visibility" role="switch" id="flexSwitchCheckChecked" checked>
+      <label class="form-check-label" for="flexSwitchCheckChecked">Visibility</label>
+    </div>
+    <div class="form-floatin mb-3">
+      <button type="submit" class="btn btn-success">
+        <i class="fas fa-plus"></i>
+        Add
+    </button>
+    </div>
+    </form>
+
+
+{% endblock %}

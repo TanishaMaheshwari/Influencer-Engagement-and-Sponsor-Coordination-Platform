@@ -1,0 +1,19 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1 class="head m-4 text-center">work submission for 
+    <span class="text-muted">"{{ application.Adrequest.Campaign.Name }}"</span>
+</h1>
+<form action="{{url_for('handover_post', id=application.id)}}", method="post">
+  <div class="form-floating mb-3">
+    <input type="url" class="form-control" id="floatingInput" name= "link" placeholder="link" required>
+    <label for="link">Paste the link to your work here.</label>
+  </div>
+
+  <div class="d-grid gap-2 col-5 mx-auto">
+    <button type="submit" class="btn btn-success"> Submit</button>
+  </div>
+</form>
+
+{% endblock %}

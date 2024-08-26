@@ -1,0 +1,143 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% include 'sponsor/searchbar.html' with context %}
+
+    <h1 class="head m-5 mb-3 text-start">Influencers: </h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                 <th>Name</th>
+                 <th>Niche</th>
+                 <th>Category</th>
+                 <th>Reach</th>
+                 <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for influencer in influencers %}
+                {% if niche != '' and niche.lower() in influencer.Niche.lower() or not niche %}
+                    {% if cat_name != '' and cat_name.lower() in influencer.Category.lower() or not incat_nameame %}
+                        {% if reach and influencer.Reach >= reach or not reach %}
+                            <tr>
+                                <td style="width: 150px;">{{ influencer.username}}</td>
+                                <td style="width: 150px;">{{ influencer.Niche}}</td>
+                                <td style="width: 200px;">{{ influencer.Category}}</td>
+                                <td style="width: 150px;">{{ influencer.Reach}}</td>
+                                <td style="width: 100px;">
+                                    <form action="{{url_for('send_request', inf_id=influencer.id)}}", method="post", class="form">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-paper-plane"></i>
+                                        <span>Request</span>
+                                    </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endif %}                            
+                    {% endif %}
+                {% endif %}                            
+            {% endfor %}
+        </tbody>
+    </table>
+
+<!-- ______________________ -->
+    <h1 class="head m-5 mb-4 text-start">Applications: </h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                 <th>Ad</th>
+                 <th>Influencer</th>
+                 <th>Niche</th>
+                 <th>Category</th>
+                 <th>Ask</th>
+                 <th>Message</th>
+                 <th>Reach</th>
+                 <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for application in applications %}
+                <tr>
+                    <td style="width: 150px;">{{ application.Adrequest.Messages }}</td>
+                    <td style="width: 150px;">{{ application.Influencer.username }}</td>
+                    <td style="width: 100px;">{{ application.Influencer.Niche }}</td>
+                    <td style="width: 150px;">{{ application.Influencer.Category }}</td>
+                    <td style="width: 100px;">{{ application.PayAsk }}INR</td>
+                    <td style="width: 300px;">{{ application.Message }}</td>
+                    <td style="width: 100px;">{{ application.Influencer.Reach }}</td>
+                    <td style="width: 300px;">
+
+                    <div class="row row-cols-md-5">
+                        <form action="{{url_for('accept_application', application_id=application.id)}}", method="post", class="form me-4">
+                        <button type="submit" class="btn btn-success">
+                            Accept                            
+                        </button>
+                        </form>
+                        <form action="{{url_for('reject_application', application_id=application.id)}}", method="post", class="form">
+                        <button type="submit" class="btn btn-outline-danger" >
+                            Reject                        
+                        </button>
+                        </form>
+                    </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<!-- ______________________ -->
+    <h1 class="head m-5  text-start">Campaigns: </h1>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                 <th>Name</th>
+                 <th>Description</th>
+                 <th>Start Date</th>
+                 <th>End Date</th>
+                 <th>Budget</th>
+                 <th>Goal</th>
+                 <th>AdReq</th>
+                 <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for campaign in campaigns %}
+                <tr>
+                    <td style="width: 150px;">{{ campaign.Name }}</td>
+                    <td style="width: 250px;">{{ campaign.Description }}</td>
+                    <td style="width: 150px;">{{ campaign.StartDate }}</td>
+                    <td style="width: 150px;">{{ campaign.EndDate }}</td>
+                    <td style="width: 100px;">{{ campaign.Budget }}INR</td>
+                    <td style="width: 150px;">{{ campaign.Goals }}</td>
+                    <td style="width: 100px;">{{ campaign.AdRequests|length }}</td>
+                    <td style="width: 300px;">
+                    <a class="btn btn-primary" href="{{ url_for('show_campaign', id=campaign.id) }}">
+                       <i class="fas fa-search"></i>
+                       
+                   </a>
+                    <a class="btn btn-dark" href="{{ url_for('edit_campaign', id=campaign.id) }}">
+                        <i class="fas fa-edit"></i>
+                        
+                    </a>
+                    <a class="btn btn-danger" href="{{ url_for('delete_campaign', id=campaign.id ) }}" >
+                        <i class="fas fa-trash"></i>
+                        
+                    </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="d-grid gap-2 col-5 mx-auto">
+        <a class="btn btn-success mt-2 mb-5" href="{{ url_for('add_campaign') }}" >
+         <i class="fas fa-plus"></i>
+         ADD
+        </a>
+    </div>
+
+{% endblock %}

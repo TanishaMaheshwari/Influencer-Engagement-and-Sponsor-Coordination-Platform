@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1 class="head m-4 text-center">Payments: </h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                 <th>Campaign</th>
+                 <th>Ad</th>
+                 <th>Requirement</th>
+                 <th>End Date</th>
+                 <th>Sponsor</th>
+                 <th>Pay</th>
+                 <th>Work</th>
+                 <th>Payment Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for payment in payments %}
+                <tr>
+                    <td style="width: 150px;">{{ payment.Adrequest.Campaign.Name }}</td>
+                    <td style="width: 150px;">{{ payment.Adrequest.Messages }}</td>
+                    <td style="width: 200px;">{{ payment.Adrequest.Requirements }}</td>
+                    <td style="width: 125px;">{{ payment.Adrequest.Campaign.EndDate }}</td>
+                    <td style="width: 100px;">{{ payment.Sponsor.username }}</td>
+                    <td style="width: 100px;">{{ payment.Pay }}</td>
+                    <td style="width: 200px;">{{ payment.Work }}</td>
+                    <td style="width: 200px;">
+                      {% if payment.Payed %}
+                      <a class="btn btn-primary" href="{{ url_for('transcript', id=payment.id) }}">
+                      <i class="fas fa-file-alt"></i>
+                        Transcript
+                      </a>                      
+                      {% else %}
+                        <span style="color: red;">Pending</span>
+                      {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

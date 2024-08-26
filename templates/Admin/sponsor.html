@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block title %}Influencer List{% endblock %}
+
+{% block content %}
+  <h1 class="text-center m-4">Sponsors</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Company</th>
+        <th>Industry</th>
+        <th>Flag</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sponsor in sponsor %}
+        <tr>
+          <td  style="width: 100px;">{{ sponsor.id }}</td>
+          <td  style="width: 100px;">{{ sponsor.username }}</td>
+          <td  style="width: 100px;">{{ sponsor.CompanyName }}</td>
+          <td  style="width: 100px;">{{ sponsor.Industry }}</td>
+          <td  style="width: 100px;">{{ sponsor.Flag }}</td>
+          <td style="width: 200px;">
+          <div class="btn-group">
+            <form action="{{url_for('spn_flag', id = sponsor.id)}}" method="post">
+                <button type="submit" class="btn btn-outline-primary me-2">
+                  Flag
+                </button>
+              </form>
+              <form action="{{url_for('spn_remove', id = sponsor.id)}}" method="post">
+                <button type="submit" class="btn btn-outline-danger" >
+                  Remove
+                </button>
+              </form>
+          </div>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+   <body>
+   </body>
+{% endblock %}
+
+{% block style %}
+  <style>
+    body, html {
+      height: 100%;
+      margin: 20px;
+      padding: 10px;
+    }
+
+    body {
+      background: url({{ url_for('static', filename='pixlr-image-generator-66a0918cad56e6c5ae81570e.png') }}) no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+{% endblock %}

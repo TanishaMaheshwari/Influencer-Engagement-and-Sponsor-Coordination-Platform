@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="card mx-auto mt-5" style="width: 80%; height: 1000%;">
+        <div class="card-body">
+            <h2 class="text-center m-3 mb-5">Transcript</h2>
+
+            <div class="row">
+                <div class="col-md-6 text-start">
+                    <h6>FROM:</h6>
+                     <p class="card-text ms-3 mb-0">ID: {{ sponsor.id }}</p>
+                     <p class="card-text ms-3 mb-0">{{ sponsor.username }}</p>
+                     <p class="card-text ms-3 mb-0">{{ sponsor.CompanyName }}</p>
+                     <p class="card-text ms-3 mb-0">{{ sponsor.Industry }}</p>                
+                    </div>
+                <div class="col-md-6 text-end">
+                    <h6>TO:</h6>
+                    <p class="card-text me-3 m-0">ID: {{ influencer.id }}</p>
+                    <p class="card-text me-3 m-0">{{ influencer.username }}</p>
+                    <p class="card-text me-3 m-0">{{ influencer.Niche }}</p>
+                    <p class="card-text me-3 m-0">{{ influencer.Category }}</p>          
+                </div>
+            </div>
+
+            <div class="text-center m-3">
+                <p class="m-0">Campaign ID:{{payment.Adrequest.Campaign.id}}</p>
+                <p class="m-0">{{payment.Adrequest.Campaign.Name}}</p>
+                <p class="m-0">{{payment.Adrequest.Campaign.StartDate}} - {{payment.Adrequest.Campaign.EndDate}}</p>
+            </div>
+
+            <div class="text-center m-3">
+                <p class="text-muted m-0">Ad Request ID:{{payment.Adrequest.id}}</p>
+                <p class="text-muted m-0">{{payment.Adrequest.Messages}}</p>
+                <p class="text-muted m-0">{{payment.Adrequest.Requirements}}</p>
+            </div>
+
+            <div class="text-center mt-3">
+                    <p class="card-text m-0 ">Payment ID:{{payment.id}}</p>
+                    <p class="card-text m-0 ">Payment Status:{{payment.Payed}}</p>
+                    <p class="card-text m-0 "><strong>Payment Amount: {{payment.Pay}} </strong></p>
+                </div>
+            </div>
+
+            <div class="text-center m-4">
+                <button class="btn btn-primary" onClick="window.print();">
+                    <i class="fas fa-print"></i>
+                    Print
+                </button>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

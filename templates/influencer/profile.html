@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="heading m-3">
+    <div class="profile_pic col-md-3">
+            <img src="https://api.dicebear.com/9.x/lorelei/svg?seed={{influencer.username}}" alt="Profile Picture" >
+    </div>
+    <div class="name col-md-9 text-end" style="margin:60px;">
+      <h1> Hello, {{ influencer.username }}!</h1>
+      <p> To change profile try different username :)</p>
+    </div>
+    </div>
+
+    <div class="container ">
+      <div class="row">
+        <div class="col-md-3">
+            <div class="sidebar sidebar-nav" style="padding: 10px; background-color: #f0f0f0;">
+            <h4 class="ms-3">More</h4>
+            <ul style="list-style: none;">
+              <li><a  class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+               href="{{ url_for('influencer_update', influencer_id=influencer.id) }}">
+                Edit Profile</a></li>
+              <li><a class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+               href="{{url_for('passchange')}}">
+                Change Password</a></li>
+              <li><a class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+               href="{{ url_for('manage_ads', influencer_id=influencer.id) }}">
+                Manage Ads</a></li>
+              <li><a class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+               href="{{ url_for('inf_pay', id=influencer.id) }}">
+                Payments</a></li>
+              <li><a class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+               href="{{ url_for('influencer_delete', influencer_id=influencer.id) }}">
+                Delete Account</a></li>
+              <li><a  class="link-dark link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+               href="{{url_for('logout')}}">
+                Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="sponsorinfo border border-light-subtle" style="padding: 28px;">
+              <p><strong>Username:</strong> {{ influencer.username }}</p>
+              <p><strong>Niche: </strong>{{ influencer.Niche }}</p>
+              <p><strong>Platform: </strong> {{ influencer.Category }}</p>
+              <p><strong>Reach: </strong>{{ influencer.Reach }} people</p>
+          </div>
+        </div>
+{% endblock %}
+
+{% block style %}
+
+    <style>
+        .heading{
+            display: flex;
+        }
+        .col-md-3{
+          flex:1;
+        }
+        .col-md-9{
+          flex:4;
+        }
+        .profile_pic{
+            width: 200px;
+            height: 200px;
+            border: 3px solid black;
+            border-radius: 50%;
+            overflow-y: auto; 
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+    </style>
+    
+{% endblock %}

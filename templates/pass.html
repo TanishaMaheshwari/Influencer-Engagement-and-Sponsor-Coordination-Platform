@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+    
+{% block title %}
+    Change Password
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="display-h3 m-3">Password Reset </h1>
+
+    <form method="post">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name= "username" value={{user.username}} placeholder="name" required>
+            <label for="username">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" name= "cpassword"  placeholder="cpassword" required>
+            <label for="cpassword">Current Password</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" name= "password" placeholder="password" required>
+            <label for="Password">New Password</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+    
+{% endblock %}

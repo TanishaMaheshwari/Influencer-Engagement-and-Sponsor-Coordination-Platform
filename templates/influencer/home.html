@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    {% include 'influencer/searchbar.html' with context %}
+    <!-- <h1 class="head m-5 mb-1 text-start">Campaigns: </h1> -->
+    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for campaign in campaign %}
+            {% if cname != '' and cname.lower() in campaign.Sponsor.CompanyName.lower() or not cname %}
+                {% if iname != '' and iname.lower() in campaign.Sponsor.Industry.lower() or not iname %}
+                    {% if price and campaign.Budget >= price or not price %}
+
+                       <div class="col">
+                           <div class="card p-2 m-3" style="width: 400px; height: 300px;"> <!-- Set a fixed height here -->
+                               <div class="card-body p-2 h-100 d-flex flex-column"> <!-- Add h-100 and d-flex flex-column classes -->
+                                   <h5 class="card-title mb-4 mt-3 fs-3 text-center ">{{ campaign.Name }}</h5>
+                                   <h6 class="card-subtitle text-body-secondary ms-3 mb-1">
+                                       By {{ campaign.Sponsor.username }}
+                                   </h6>
+                                   <ul class="flex-grow-1"> <!-- Add flex-grow-1 class to take up the remaining space -->
+                                       {% for Adrequest in campaign.AdRequests %}
+                                           <li>{{ Adrequest.Messages }}</li>
+                                       {% endfor %}
+                                   </ul>
+                                   <div class="mt-auto d-flex justify-content-center"> <!-- Add mt-auto class to push the buttons to the bottom -->
+                                       <a class="btn btn-outline-secondary m-2" href="{{ url_for('sponsor_info', id=campaign.Sponsor.id) }}">
+                                          <i class="fas fa-search"></i>
+                                           Sponsor
+                                      </a>     
+                                      <a class="btn btn-outline-secondary m-2" href="{{ url_for('campaign_info', id=campaign.id) }}">
+                                          <i class="fas fa-search"></i>
+                                           Campaign
+                                      </a>          
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                    {% endif %}
+                {% endif %}   
+            {% endif %}   
+        {% endfor %}
+    </div>
+
+    <h1 class="head m-5 mb-3 text-start">Requests: </h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                 <th>Sponsor Name</th>
+                 <th>Company Name</th>
+                 <th>Industry</th>
+                 <th>Budget</th>
+                 <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for sponsor in sponsors %}
+            <tr>
+                <td style="width: 150px;">{{ sponsor.username}}</td>
+                <td style="width: 150px;">{{ sponsor.CompanyName}}</td>
+                <td style="width: 200px;">{{ sponsor.Industry}}</td>
+                <td style="width: 150px;">{{ sponsor.Budget}}</td>
+                <td style="width: 150px;">
+                <div class="row row-cols-md-5">
+                        <form action="{{url_for('req_sponsor_info', id = sponsor.id)}}", method="post", class="form me-4">
+                        <button type="submit" class="btn btn-success">
+                        Apply                  
+                        </button>
+                        </form>
+                        <form action="{{url_for('delete_request', id = sponsor.id)}}", method="post", class="form">
+                        <button type="submit" class="btn btn-outline-danger" >
+                            <i class="fas fa-trash"></i>                        
+                        </button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    EDIT Influencer
+{% endblock %}
+
+{% block content %}
+
+    <h3 class="display-h3 m-3"> UPDATE </h3>
+
+    <form action="" method="POST" class="form">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "name" placeholder="name" value="{{influencer.username}}" required>
+      <label for="name">Name</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "Niche" placeholder="Niche" value="{{influencer.Niche}}" required>
+      <label for="Niche">Niche</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "Category" placeholder="Category" value="{{influencer.Category}}" required>
+      <label for="Category">Platform</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="floatingInput" name= "Reach" placeholder="Reach"  value="{{influencer.Reach}}" required>
+      <label for="Reach">Reach</label>
+    </div>
+    <div class="form-floating mb-3">
+      <button type="submit" class="btn btn-success">
+        <i class="fas fa-pencil-alt"></i>
+        Update
+    </button>
+    </div>
+    </form>
+
+
+{% endblock %}

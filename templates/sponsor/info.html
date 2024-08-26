@@ -1,0 +1,66 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="card mx-auto mt-3" style="width: 80%; height: 1000%; padding: 3%;">
+    <div class="heading m-3">
+
+        <div class="name fs-4 col-md-9 text-start">
+            <h3 class="card-title mb-3"><i class="fas fa-user me-5"></i>Username:  @{{ sponsor.username }}</h3>
+            <p class="card-text"><i class="fas fa-building me-5"></i>Company: {{ sponsor.CompanyName }}</p>
+            <p class="card-text"><i class="fas fa-industry me-5"></i>Industry: {{ sponsor.Industry }}</p>
+            <p class="card-text"><i class="fas fa-money-bill-wave me-5"></i>Budget: {{ sponsor.Budget }}</p>
+        </div>
+
+        <div class="profile_pic col-md-3">
+        <img src="https://api.dicebear.com/9.x/lorelei/svg?seed={{sponsor.username}}" alt="Sponsor Profile Picture">
+        </div>
+
+    </div>
+
+    <h6 class="card-subtitle mb-2 mt-4 text-body-secondary">Campaigns:</h6>
+            <div class="row">
+            {% for campaign in campaign %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100" style="width: 100%; height: 250px;">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="card-title mb-2">{{ campaign.Name }}</h3>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Campaign Description:</h6>
+                            <p class="card-text">{{ campaign.Description }}</p>
+                            <h6 class="card-subtitle mb-2 text-body-secondary">Campaign Details:</h6>
+                            <ul class="flex-grow-1" style="list-style: none;">
+                                <li class="m-2">Goal:- {{ campaign.Goals }}</li>
+                                <li class="m-2">Budget:- {{ campaign.Budget }} INR</li>
+                            </ul>
+                            <a class="btn btn-outline-secondary fa-beat-fade" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075; --fa-animation-iteration-count: 2;" href="{{ url_for('campaign_info', id=campaign.id) }}">
+                               <i class="fas fa-eye"></i>
+                               View
+                           </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor%}
+
+            </div>
+    </div>
+{% endblock %}
+
+
+{% block style %}
+
+    <style>
+        .heading{
+            display: flex;
+        }
+        .profile_pic{
+          width: 200px;
+          height: 200px;
+          border: 3px solid black;
+          border-radius: 50%;
+          overflow-y: auto; 
+          margin-top: 10px;
+          margin-left: 40px;
+        }
+    </style>
+    
+{% endblock %}

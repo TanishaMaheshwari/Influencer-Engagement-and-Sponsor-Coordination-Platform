@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div>
+    <h3 class="text-start mt-4">Campaigns</h3>
+    <canvas id="campChart"></canvas>
+</div>
+<div>
+    <h3 class="text-start mt-4">Applications</h3>
+    <canvas id="infChart"></canvas>
+</div>
+{% endblock %}
+
+{% block script %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('campChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels:{{sponsor_industry|safe}},
+      datasets: [{
+        label: '# of campaign per industry',
+        data: {{no_of_campaign_per_industry|safe}},
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+  const ifc = document.getElementById('infChart');
+
+    new Chart(ifc, {
+      type: 'bar',
+      data: {
+        labels:{{inf_niche|safe}},
+        datasets: [{
+          label: '# of application per niche',
+          data: {{no_of_application_per_inf_niche|safe}},
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+</script>
+{% endblock %}

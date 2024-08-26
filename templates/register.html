@@ -1,0 +1,134 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1 class="display-5 text-center mt-5">Register Page</h1>
+<form method="post">
+<div class="form-floating mb-3">
+  <input type="text" class="form-control" id="floatingInput" name= "username" placeholder="name" required>
+  <label for="username">Username</label>
+</div>
+
+<div class="form-floating mb-3">
+  <input type="password" class="form-control" id="floatingPassword"  name= "password" placeholder="Password" required>
+  <label for="password">Password</label>
+</div>
+
+
+<div class="form-floating mb-3">
+  <input type="password" class="form-control" id="floatingPassword"  name= "confirm_password" placeholder="Password" required>
+  <label for="confirm_password"> Confirm Password</label>
+</div>
+
+<fieldset class="row mb-3">
+    <div class="col-sm-10">
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="Sponsor">
+        <label class="form-check-label" for="gridRadios2">
+          Sponsor
+        </label>
+      </div>
+      <div class="form-check disabled">
+        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="Influencer">
+        <label class="form-check-label" for="gridRadios3">
+          Influencer
+        </label>
+      </div>
+    </div>
+  </fieldset>
+
+<button class="btn btn-primary" type="submit">Register</button>
+<a class="btn btn-secondary" href="{{ url_for('login') }}" role="button">Login</a>
+</form>
+{% endblock %}
+
+{% block style %}
+<style>
+    body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f7f7f7;
+  }
+
+  h1.display-5 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  form {
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  .form-floating {
+    margin-bottom: 20px;
+  }
+
+  .form-control {
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+
+  .form-control:focus {
+    border-color: #aaa;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  label {
+    font-weight: bold;
+    color: #666;
+  }
+
+  button.btn-primary {
+    background-color: #337ab7;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  button.btn-primary:hover {
+    background-color: #23527c;
+  }
+
+  a.btn-secondary {
+    background-color: #666;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  a.btn-secondary:hover {
+    background-color: #444;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .form-check {
+    margin-bottom: 10px;
+  }
+
+  .form-check-label {
+    font-weight: bold;
+    color: #666;
+  }
+
+  .form-check-input[type="radio"] {
+    margin-top: 10px;
+  }
+
+</style>
+{% endblock %}

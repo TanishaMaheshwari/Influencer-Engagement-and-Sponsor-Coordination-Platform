@@ -1,0 +1,81 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <h1 class="head m-4 text-center">Approved Requests: </h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                 <th>Campaign</th>
+                 <th>Ad</th>
+                 <th>Requirement</th>
+                 <th>End Date</th>
+                 <th>Payment</th>
+                 <th>Sponsor</th>
+                 <th>Goal</th>
+                 <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for approve in approved %}
+                <tr>
+                    <td style="width: 150px;">{{ approve.Adrequest.Campaign.Name }}</td>
+                    <td style="width: 150px;">{{ approve.Adrequest.Messages }}</td>
+                    <td style="width: 200px;">{{ approve.Adrequest.Requirements }}</td>
+                    <td style="width: 125px;">{{ approve.Adrequest.Campaign.EndDate }}</td>
+                    <td style="width: 100px;">{{ approve.PayAsk }}</td>
+                    <td style="width: 100px;">{{ approve.Sponsor.username }}</td>
+                    <td style="width: 200px;">{{ approve.Adrequest.Campaign.Goals }}</td>
+                    <td style="width: 200px;">
+                    <a class="btn btn-success" href="{{ url_for('handover', id=approve.id) }}">
+                       <i class="fas fa-clipboard-check"></i>
+                       Hand Over
+                   </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h1 class="head m-4 text-center">Pending Requests: </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                 <th>Campaign</th>
+                 <th>Ad</th>
+                 <th>Requirement</th>
+                 <th>End Date</th>
+                 <th>Pay Asked</th>
+                 <th>Sponsor</th>
+                 <th>Goal</th>
+                 <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for pending in pendings %}
+                <tr>
+                    <td style="width: 150px;">{{ pending.Adrequest.Campaign.Name }}</td>
+                    <td style="width: 150px;">{{ pending.Adrequest.Messages }}</td>
+                    <td style="width: 200px;">{{ pending.Adrequest.Requirements }}</td>
+                    <td style="width: 125px;">{{ pending.Adrequest.Campaign.EndDate }}</td>
+                    <td style="width: 100px;">{{ pending.PayAsk }}</td>
+                    <td style="width: 100px;">{{ pending.Sponsor.username }}</td>
+                    <td style="width: 200px;">{{ pending.Adrequest.Campaign.Goals }}</td>
+                    <td style="width: 200px;">
+                    <a class="btn btn-primary" href="{{ url_for('campaign_info', id=pending.Adrequest.Campaign.id) }}">
+                       <i class="fas fa-eye"></i>
+                       View
+                   </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+

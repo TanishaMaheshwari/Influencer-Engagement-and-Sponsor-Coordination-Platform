@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    EDIT Sponsor
+{% endblock %}
+
+{% block content %}
+
+    <h3 class="display-h3 m-3"> UPDATE </h3>
+
+    <form action="" method="POST" class="form">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "name" placeholder="name" value="{{sponsor.username}}" required>
+      <label for="name">Name</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "Company" placeholder="Company" value="{{sponsor.CompanyName}}" required>
+      <label for="Company">Company</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "Industry" placeholder="Industry" value="{{sponsor.Industry}}" required>
+      <label for="Industry">Industry</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="floatingInput" name= "Budget" placeholder="Budget"  value="{{sponsor.Budget}}" required>
+      <label for="Budget">Budget</label>
+    </div>
+    <div class="form-floating mb-3">
+      <button type="submit" class="btn btn-success">
+        <i class="fas fa-pencil-alt"></i>
+        Update
+    </button>
+    </div>
+    </form>
+
+
+{% endblock %}

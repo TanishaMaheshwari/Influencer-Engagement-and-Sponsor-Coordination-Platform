@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+   <div class="heading m-3">
+       <div class="profile_pic">
+        <img src="https://api.dicebear.com/9.x/lorelei/svg?seed={{user.username}}" alt="Profile Picture"  >
+    </div>
+   <h1>
+     Hello
+     <span class="text-muted">@{{user.username}}</span>
+     !!!
+    </h1>
+   </div>
+
+{% endblock %}
+
+{% block style %}
+
+    <style>
+        .heading{
+            display: flex;
+            justify-content: space-between;
+            align_items: center;
+        }
+        .profile_pic{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            border-radius: 50%;
+        }
+    </style>
+    
+{% endblock %}

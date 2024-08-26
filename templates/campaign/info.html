@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="card mx-auto mt-5" style="width: 80%; height: 1000%;">
+        <div class="card-body">
+            <h1 class="card-title mt-2 text-center">{{ campaign.Name }}</h1>
+            <h6 class="card-subtitle mb-4 text-center text-body-secondary">{{ campaign.StartDate }} to {{ campaign.EndDate }}</h6>
+            <ul style="list-style: none;">
+                <li><strong>Description:</strong> {{ campaign.Description }}</li>
+                <li><strong>Goals:</strong> {{ campaign.Goals }}</li>
+                <li><strong>Budget:</strong> {{ campaign.Budget }}</li>
+                <li><strong>Sponsor:</strong> {{ campaign.Sponsor.username }}</li>
+            </ul>
+
+            <h6 class="card-subtitle mb-2 mt-4 text-body-secondary">Ad Requests:</h6>
+            <div class="row">
+                {% for Adrequest in campaign.AdRequests %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card h-100" style="width: 100%; height: 250px;">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title mb-2">{{ Adrequest.Messages }}</h>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">Ad Request Details:</h6>
+                                <ul class="flex-grow-1" style="list-style: none;">
+                                    <li class="m-2">Requirement:- {{ Adrequest.Requirements }}</li>
+                                    <li class="m-2">Pay:- {{ Adrequest.PaymentAmount }} INR</li>
+                                </ul>
+                                <a class="btn btn-outline-secondary fa-beat-fade" style="--fa-beat-fade-opacity: 0.67; --fa-beat-fade-scale: 1.075; --fa-animation-iteration-count: 2;" href="{{ url_for('apply', id=Adrequest.id) }}">
+                                   <i class="fas fa-plus"></i>
+                                   Apply
+                               </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

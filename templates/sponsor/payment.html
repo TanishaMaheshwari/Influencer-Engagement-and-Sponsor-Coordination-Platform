@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Payment
+{% endblock %}
+
+{% block content %}
+
+    <h3 class="display-h3 m-3"> Payment </h3>
+
+    <form action="" method="POST" class="form">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" name= "name" placeholder="name" value="{{influencer.username}}" readonly>
+      <label for="name">Name</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="number" class="form-control" id="floatingInput" name= "budget" placeholder="budget"  value="{{payments.Pay}}" readonly>
+      <label for="budget">Pay</label>
+    </div>
+    <div class="form-floating mb-3">
+      <button type="submit" class="btn btn-success">
+        <i class="fas fa-money-check"></i>
+        Pay
+    </button>
+    </div>
+    </form>
+
+
+{% endblock %}
