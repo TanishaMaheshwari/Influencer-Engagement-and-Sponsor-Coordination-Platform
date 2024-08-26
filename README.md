@@ -1,10 +1,8 @@
 # Influencer-Engagement-and-Sponsor-Coordination-Platform
 
-It is a platform designed to connect sponsors and influencers, enabling sponsors to advertise their products or services while providing influencers with opportunities for monetary benefit.
+It is a platform designed to connect sponsors and influencers, enabling sponsors to advertise their products or services while providing influencers with opportunities for monetary benefit.The application allows both influencers and sponsors to register and interact with each other seamlessly.
 
-The application allows both influencers and sponsors to register and interact with each other seamlessly.
-
-I. Registration: Both influencers and sponsors can create accounts on Collabify.
+I. Registration: Both influencers and sponsors can create accounts on it.
 
 II. Campaign Management: Sponsors have the ability to create and manage advertising campaigns and ad requests.
 
