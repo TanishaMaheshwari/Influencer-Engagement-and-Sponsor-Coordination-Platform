@@ -1,11 +1,9 @@
 # **Collabify**  
 **A platform connecting sponsors with influencers to simplify and streamline collaboration processes.**  
 
-## **Presentation Video**
+Watch the presentation of Collabify to see how it works:
+[Watch the Video](https://drive.google.com/file/d/1jM8fUDdjlRXNeuOwiXeNzcnbjA6_zbbC/view?usp=sharing)
 
-Watch the Collabify demo here:
-
-<iframe width="560" height="315" src="https://drive.google.com/file/d/1jM8fUDdjlRXNeuOwiXeNzcnbjA6_zbbC/view?usp=sharing" frameborder="0" allowfullscreen></iframe>
 
 
 ---
