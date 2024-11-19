@@ -11,7 +11,6 @@
 - [Usage](#usage)  
 - [Future Enhancements](#future-enhancements)  
 - [Contributing](#contributing)  
-- [License](#license)  
 
 ---
 
@@ -134,4 +133,6 @@ We welcome contributions from the community!
 5. Open a pull request with a detailed description of your changes.  
 
 ---
+
+**You can now explore the Collabify platform!**
 
