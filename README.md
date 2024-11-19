@@ -109,6 +109,10 @@ Collabify bridges the gap between sponsors and influencers by providing a user-f
    - Browse active sponsorship campaigns.  
    - Apply for campaigns and track application status.  
 
+3. **Admins**:  
+   - Manage and enable/disable influencer and sponsor accounts.  
+   - Monitor platform activity and gain insights through charts (e.g., campaign performance, user engagement).
+
 ---
 
 ## **Future Enhancements**  
